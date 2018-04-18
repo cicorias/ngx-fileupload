@@ -3,22 +3,20 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { environment } from '../../../environments/environment';
 
-// const URL =  'https://evening-anchorage-3159.herokuapp.com/api/';
-
-const URL = environment.apiUrl;
-
 @Component({
   selector: 'app-file',
   templateUrl: './file.component.html',
   styleUrls: ['./file.component.css']
 })
 export class FileComponent implements OnInit {
-
-  public uploader: FileUploader = new FileUploader({ url: URL});
+  @Input() fileUrl: string;
+  public uploader: FileUploader = new FileUploader({ url: this.fileUrl});
   public hasBaseDropZoneOver = false;
   public hasAnotherDropZoneOver = false;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
